@@ -96,10 +96,8 @@ module MailCatcher extend self
           end
         end
 
-        unless windows?
-          parser.on('-f', '--foreground', 'Run in the foreground') do
-            options[:daemon] = false
-          end
+        parser.on('-f', '--foreground', 'Run in the foreground') do
+          options[:daemon] = false
         end
 
         if browse?
