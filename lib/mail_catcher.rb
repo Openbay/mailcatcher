@@ -92,6 +92,10 @@ module MailCatcher extend self
           options[:quit] = false
         end
 
+        parser.on('-f', '--foreground', 'Run in the foreground') do
+          options[:daemon] = false
+        end
+
         if mac?
           parser.on("--[no-]growl") do |growl|
             puts "Growl is no longer supported"
@@ -99,11 +103,6 @@ module MailCatcher extend self
           end
         end
 
-        unless windows?
-          parser.on('-f', '--foreground', 'Run in the foreground') do
-            options[:daemon] = false
-          end
-        end
 
         if browse?
           parser.on('-b', '--browse', 'Open web browser') do
